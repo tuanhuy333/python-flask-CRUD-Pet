@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "5d841bd3-b2d3-4264-b9d7-c19ed41a828a",
+		"name": "python-flask-CRUD-pet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12123808"
+	},
+	"item": [
+		{
+			"name": "add pet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n   \"breed\": \"German Shepherd\", \n   \"id\": 1, \n   \"name\": \"doggie\", \n   \"price\": 100 \n }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/pet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get All pets",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n   \"breed\": \"German Shepherd\", \n   \"id\": 1, \n   \"name\": \"doggie\", \n   \"price\": 100 \n }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/pet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"pet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get pet by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n   \"breed\": \"German Shepherd\", \n   \"id\": 1, \n   \"name\": \"doggie\", \n   \"price\": 100 \n }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/pet/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"pet",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete pet by id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n   \"breed\": \"German Shepherd\", \n   \"id\": 1, \n   \"name\": \"doggie\", \n   \"price\": 100 \n }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/pet/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"pet",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update pet by id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"breed\": \"German Shepherd\",\n    \"id\": 3,\n    \"name\": \"doggie\",\n    \"price\": 100\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/pet/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"pet",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
