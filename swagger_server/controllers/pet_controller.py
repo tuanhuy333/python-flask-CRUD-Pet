@@ -1,9 +1,11 @@
 import connexion
+from flask import render_template
 import six
 
 from swagger_server.models.pet import Pet  # noqa: E501
 from swagger_server.models.pets import Pets  # noqa: E501
 from swagger_server import util
+from swagger_server.services import pets_service
 
 
 def add_pet(body):  # noqa: E501
@@ -18,7 +20,9 @@ def add_pet(body):  # noqa: E501
     """
     if connexion.request.is_json:
         body = Pet.from_dict(connexion.request.get_json())  # noqa: E501
-    return 'do some magic!'
+        print("abc123" + str(body))
+        pets_service.add_pet(body)
+    return {}, 201
 
 
 def get_all_pets():  # noqa: E501
@@ -29,7 +33,13 @@ def get_all_pets():  # noqa: E501
 
     :rtype: Pets
     """
-    return 'do some magic!'
+    petsAll = pets_service.get_all_pets()
+    print("petsAll {pet}".format(pet = petsAll))
+    pets_in_store = []
+    for pet in petsAll:
+        current_pet = Pet(id=pet["id"], breed=pet["breed"],price=pet["price"],name=pet["name"])
+        pets_in_store.append(current_pet)
+    return pets_in_store, 200
 
 
 def get_pet(pet_id):  # noqa: E501
@@ -42,7 +52,12 @@ def get_pet(pet_id):  # noqa: E501
 
     :rtype: Pet
     """
-    return 'do some magic!'
+    try:
+        pet = pets_service.get_pet(pet_id)
+        response = Pet(id=pet["id"], breed=pet["breed"],price=pet["price"],name=pet["name"])
+    except KeyError:
+        response = {},404
+    return response
 
 
 def remove_pet(pet_id):  # noqa: E501
@@ -55,10 +70,16 @@ def remove_pet(pet_id):  # noqa: E501
 
     :rtype: None
     """
-    return 'do some magic!'
+    try:
+        pets_service.remove_pet(pet_id)
+        response = {},200
+    except KeyError:
+        response = {},404
+    return response
 
 
-def update_pet(pet_id, Pet):  # noqa: E501
+
+def update_pet(pet_id, new_pet):# noqa: E501
     """Update and replace a pet in the store
 
      # noqa: E501
@@ -70,6 +91,14 @@ def update_pet(pet_id, Pet):  # noqa: E501
 
     :rtype: None
     """
+   
     if connexion.request.is_json:
-        Pet = Pet.from_dict(connexion.request.get_json())  # noqa: E501
-    return 'do some magic!'
+        new_pet = Pet.from_dict(connexion.request.get_json())  # noqa: E501
+
+    try:
+        pets_service.update_pet(pet_id, new_pet)
+        response = {}, 200
+    except KeyError:
+        response = {}, 404
+
+    return response

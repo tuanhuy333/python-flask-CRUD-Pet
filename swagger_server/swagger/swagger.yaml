@@ -32,7 +32,7 @@ paths:
             $ref: "#/definitions/Pet"
         "404":
           description: "Pet doesn't exist"
-      x-swagger-router-controller: "test_api.web.controllers.pets_controller"
+      x-swagger-router-controller: "swagger_server.controllers.pet_controller"
     put:
       tags:
       - "pet"
@@ -45,7 +45,7 @@ paths:
         required: true
         type: "string"
       - in: "body"
-        name: "Pet"
+        name: "new_pet"
         required: true
         schema:
           $ref: "#/definitions/Pet"
@@ -54,7 +54,7 @@ paths:
           description: "Successfully updated pet"
         "404":
           description: "Pet doesn't exist"
-      x-swagger-router-controller: "test_api.web.controllers.pets_controller"
+      x-swagger-router-controller: "swagger_server.controllers.pet_controller"
     delete:
       tags:
       - "pet"
@@ -71,7 +71,7 @@ paths:
           description: "Successfully deleted pet"
         "404":
           description: "Pet doesn't exist"
-      x-swagger-router-controller: "test_api.web.controllers.pets_controller"
+      x-swagger-router-controller: "swagger_server.controllers.pet_controller"
   /pet:
     get:
       tags:
@@ -84,7 +84,7 @@ paths:
           description: "Successfully received all pets."
           schema:
             $ref: "#/definitions/Pets"
-      x-swagger-router-controller: "test_api.web.controllers.pets_controller"
+      x-swagger-router-controller: "swagger_server.controllers.pet_controller"
     post:
       tags:
       - "pet"
@@ -100,7 +100,7 @@ paths:
       responses:
         "201":
           description: "Pet added"
-      x-swagger-router-controller: "test_api.web.controllers.pets_controller"
+      x-swagger-router-controller: "swagger_server.controllers.pet_controller"
 definitions:
   Pets:
     type: "array"
